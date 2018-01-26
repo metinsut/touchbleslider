@@ -1,0 +1,15 @@
+header {
+  display: flex;
+  background-color: #D4E6B5;
+  ul {
+    display: flex;
+    li {
+      list-style: none;
+      margin: 2em;
+      a {
+        text-decoration: none;
+        @include font-style(2em,#4a4a4a)
+      }
+    }
+  }
+}
