@@ -25,5 +25,10 @@
   font-weight: normal;
 }
 
+@mixin font-style($size,$color){
+  font-size: $size;
+  color: $color;
+}
+
 
 

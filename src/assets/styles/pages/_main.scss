@@ -14,7 +14,8 @@ body {
     h1 {
       padding: 20px;
       @include Roboto-Medium;
-      @include font-style(3em, #4a4a4a);
+      font-size: 3em;
+      color: #4a4a4a;
     }
     p {
       padding: 20px;
