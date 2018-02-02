@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Swipeable from 'react-swipeable';
 
 class PageOne extends Component {
 
@@ -38,12 +39,6 @@ class PageOne extends Component {
         this.forceUpdate();
     };
 
-    componentDidMount() {
-    }
-
-    componentDidUpdate() {
-    }
-
 
     render() {
         return (
@@ -62,15 +57,22 @@ class PageOne extends Component {
                     </div>
                 </div>
                 <div className="sliderRoot" ref="root">
-                    <div className="sliderBlock" >
-                        <div className="sliderAbsoluteBlock" ref="slider" style={{left: this.leftPosition}}>
-                            {this.state.images.map((item, key) => (
-                                <div key={key} className="imgBlock" ref="card">
-                                    <img src={item.img} alt=""/>
-                                </div>
-                            ))
-                            }
-                        </div>
+                    <div className="sliderBlock">
+
+                        <Swipeable
+                            onSwipedRight={() => this.changeImage(-1)}
+                            onSwipedLeft={() => this.changeImage(1)}
+                        >
+
+                            <div className="sliderAbsoluteBlock" ref="slider" style={{left: this.leftPosition}}>
+                                {this.state.images.map((item, key) => (
+                                    <div key={key} className="imgBlock" ref="card">
+                                        <img src={item.img} alt=""/>
+                                    </div>
+                                ))
+                                }
+                            </div>
+                        </Swipeable>
                     </div>
                 </div>
             </div>

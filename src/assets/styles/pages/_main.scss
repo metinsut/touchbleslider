@@ -139,3 +139,210 @@ body {
     }
   }
 }
+
+.wrapper2 {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: slategrey;
+  padding: 5px;
+  .sliderRoot {
+    height: 500px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    flex: 1 1 100%;
+    background-color: slateblue;
+    .sliderBlock {
+      background-color: seagreen;
+      padding: 5px;
+      display: flex;
+      flex: 1 1 100%;
+      height: 400px;
+      position: relative;
+      .imgBlock {
+        z-index: 1;
+        position: absolute;
+        left: 5px;
+        right: 5px;
+        top: 5px;
+        bottom: 5px;
+        background-color: darkmagenta;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      .textBlock {
+        z-index: 2;
+        color: #ffffff;
+        display: flex;
+        flex: 1 1 100%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .animation {
+          animation: example 3s;
+          animation-fill-mode: forwards;
+          @keyframes example {
+            0% {
+              top: 0;
+            }
+            100% {
+              top: -50px;
+              color: firebrick;
+            }
+          }
+        }
+        h1 {
+          position: relative;
+          font-size: 5em;
+        }
+        h3 {
+          font-size: 3em;
+        }
+        p {
+          font-size: 2em;
+        }
+      }
+    }
+  }
+  .buttons {
+    flex: 1 1 100%;
+    font-size: 5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    .left {
+      padding: 0 20px;
+      cursor: pointer;
+    }
+    .right {
+      padding: 0 10px;
+      cursor: pointer;
+    }
+  }
+}
+
+.wrapper3 {
+  background-color: slategrey;
+  .sliderRoot {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #877B66;
+    padding: 15px;
+    height: 700px;
+    .sliderBlock {
+      flex: 1 1 100%;
+      height: 600px;
+      position: relative;
+      background-color: firebrick;
+      .sliderAbsoluteBlock {
+        width: 100%;
+        height: 600px;
+        position: absolute;
+        background-color: slateblue;
+        display: flex;
+        .imgBlock {
+          z-index: 1;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          visibility: hidden;
+          opacity: 1;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+        .textBlock {
+          align-self: center;
+          z-index: 2;
+          position: absolute;
+          font-size: 4em;
+          visibility: hidden;
+        }
+        .activeText {
+          visibility: visible;
+          animation: test2 2s;
+          animation-fill-mode: forwards;
+          @keyframes test2 {
+            from {
+              opacity: 0;
+              top: 400px;
+            }
+            to {
+              opacity: 1;
+              top: 200px;
+            }
+          }
+        }
+        .goneText {
+          visibility: visible;
+          animation: test 2s;
+          animation-fill-mode: forwards;
+          @keyframes test {
+            from {
+              top: 100px;
+              opacity: 1;
+            }
+            to {
+              top: 0;
+              opacity: 0;
+            }
+          }
+        }
+        .activeImage {
+          visibility: visible;
+          animation-name: image2;
+          animation-duration: 3s;
+          animation-fill-mode: forwards;
+          @keyframes image2 {
+            from {
+              opacity: 0;
+            }
+            to {
+              opacity: 1;
+            }
+          }
+        }
+        .goneImage {
+          visibility: visible;
+          animation-name: image1;
+          animation-duration: 3s;
+          animation-fill-mode: forwards;
+          @keyframes image1 {
+            from {
+              opacity: 1;
+            }
+            to {
+              opacity: 0;
+            }
+          }
+        }
+      }
+    }
+    .buttons {
+      flex: 1 1 100%;
+      display: flex;
+      align-content: center;
+      justify-content: center;
+      font-size: 5em;
+      background-color: floralwhite;
+      .left {
+        padding: 20px;
+        cursor: pointer;
+      }
+      .right {
+        padding: 20px;
+        cursor: pointer;
+      }
+    }
+  }
+}

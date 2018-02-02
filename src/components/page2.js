@@ -27,21 +27,35 @@ class PageTwo extends Component {
 
         // let sagdaKalanbosluk = (this.refs.root.offsetWidth) - ((this.state.images.length * this.refs.card.offsetWidth) - (this.itemIndex * this.refs.card.offsetWidth));
 
-        if ((this.itemIndex < this.state.images.length - 1) && (next === 1)) {
-            this.leftPosition -= this.refs.card.offsetWidth;
-            this.itemIndex += next;
+
+        if ((this.itemIndex < this.state.images.length - 1) && (next === 1) && ((this.state.images.length-1)-this.itemIndex)>Math.floor(this.refs.wrapper.offsetWidth / this.refs.card.offsetWidth)) {
+            this.leftPosition -= Math.floor(this.refs.wrapper.offsetWidth / this.refs.card.offsetWidth) * this.refs.card.offsetWidth;
+            this.itemIndex += Math.floor(this.refs.wrapper.offsetWidth / this.refs.card.offsetWidth);
         }
         else if ((this.itemIndex > 0) && (next === -1)) {
-            this.leftPosition += this.refs.card.offsetWidth;
-            this.itemIndex += next;
+            this.leftPosition += Math.floor(this.refs.wrapper.offsetWidth / this.refs.card.offsetWidth) * this.refs.card.offsetWidth;
+            this.itemIndex -= Math.floor(this.refs.wrapper.offsetWidth / this.refs.card.offsetWidth);
         }
         this.forceUpdate();
     };
 
 
+    componentDidMount() {
+        // console.log(Math.floor(this.refs.wrapper.offsetWidth / this.refs.card.offsetWidth) * this.refs.card.offsetWidth);
+        console.log(this.itemIndex)
+    }
+
+    componentDidUpdate() {
+        // console.log(Math.floor(this.refs.wrapper.offsetWidth / this.refs.card.offsetWidth));
+        console.log(this.itemIndex);
+        console.log(this.state.images.length-1);
+        console.log((this.state.images.length-1)-this.itemIndex);
+    }
+
+
     render() {
         return (
-            <div className="wrapper1">
+            <div className="wrapper1" ref="wrapper">
                 <div className="textBlock1">
                     <h1>Lorem ipsum dolor sit amet.</h1>
                 </div>
@@ -58,8 +72,6 @@ class PageTwo extends Component {
                                         facilis
                                         ipsa magni
                                         provident quas repellat rerum sed voluptas!</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea, eligendi quod? A
-                                        autem commodi deleniti eos, laborum minima quibusdam vitae.</p>
                                 </div>
                             </div>
                         ))

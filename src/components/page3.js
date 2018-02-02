@@ -20,35 +20,45 @@ class PageThree extends Component {
         };
     }
 
-    changeImage = () => {
-        console.log("test")
+    slideIndex = 0;
+
+    slide = (n) => {
+        this.slideIndex = this.slideIndex === 0 && n < 0 ? this.state.images.length - 1 : (this.slideIndex + n) % this.state.images.length;
+        this.forceUpdate();
+    };
+
+
+    componentDidUpdate() {
+        this.refs.animate.classList.toggle("animation");
     }
 
     render() {
         return (
-            <div className="wrapper">
-                <div className="textBlock">
-                    <h1>Lorem ipsum dolor sit amet.</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores eum ex facilis ipsa magni
-                        provident quas repellat rerum sed voluptas!</p>
-                    <div className="buttons">
-                        <div onClick={() => {
-                            this.changeImage(-1)
-                        }} className="left">&#9664;</div>
-                        <div onClick={() => {
-                            this.changeImage(1)
-                        }} className="right">&#9654;</div>
-                    </div>
-                </div>
+            <div className="wrapper2">
                 <div className="sliderRoot">
-                    <div className="sliderBlock">
-                        {this.state.images.map((item, key) => (
+                    {this.state.images.map((item, key) => (
+                        this.slideIndex === key &&
+                        <div className="sliderBlock" key={key} >
+                            <div className="textBlock">
+                                <h1 ref="animate">Lorem ipsum. {key}</h1>
+                                <h3>Lorem ipsum dolor sit.</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias blanditiis
+                                    consequatur corporis eaque earum hic illum minus molestiae pariatur provident?</p>
+                            </div>
                             <div key={key} className="imgBlock">
                                 <img src={item.img} alt=""/>
                             </div>
-                        ))
-                        }
-                    </div>
+                        </div>
+                    ))
+                    }
+                </div>
+                <div className="buttons">
+                    <div onClick={() => {
+                        this.slide(-1)
+                    }} className="left">&#9664;</div>
+                    <div onClick={() => {
+                        this.slide(1)
+                    }} className="right">&#9654;</div>
                 </div>
             </div>
         );

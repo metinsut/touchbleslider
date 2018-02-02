@@ -19,6 +19,9 @@ class Header extends Component {
                     <li>
                         <Link to="/pagethree">Page Three</Link>
                     </li>
+                    <li>
+                        <Link to="/pagefour">Page Four</Link>
+                    </li>
                 </ul>
             </header>
         )
